@@ -32,7 +32,9 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    <button class="btn btn-default">Назад</button>
+                    <button class="btn btn-default">
+                        <a href="/admin/categories">Назад</a>
+                    </button>
                     <button class="btn btn-success pull-right">Добавить</button>
                 </div>
                 <!-- /.box-footer-->

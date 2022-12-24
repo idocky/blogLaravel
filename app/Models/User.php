@@ -82,21 +82,24 @@ class User extends Authenticatable
     public function uploadAvatar($image)
     {
         if($image == null) {return;}
+        if($this->avatar != null)
+        {
+            Storage::delete('uploads/' . $this->avatar);
+        }
 
-        Storage::delete('uploads/' . $this->image);
-        $filename = Str::random(10) . '.' . $image->extansion();
-        $image->saveAs('uploads', $filename);
-        $this->image = $filename;
+        $filename = Str::random(10) . '.' . $image->extension();
+        $image->storeAs('uploads', $filename);
+        $this->avatar = $filename;
         $this->save();
     }
 
     public function getImage()
     {
-        if($this->image == null){
+        if($this->avatar == null){
             return 'img/no-user-image.png';
         }
 
-        return 'uploads/' . $this->image;
+        return '/uploads/' . $this->avatar;
     }
 
     public function makeAdmin()
