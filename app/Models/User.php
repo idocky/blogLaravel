@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use http\Env\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -25,7 +26,6 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
     ];
 
     /**
@@ -69,9 +69,18 @@ class User extends Authenticatable
 
     public function edit($fields)
     {
-        $this->fill($fields);
-        $this->password = bcrypt($fields['password']);
+        $this->fill($fields); //name, email
         $this->save();
+    }
+
+
+    public function passwordGenerate($password)
+    {
+        if($password != null)
+        {
+            $this->password = bcrypt($password);
+            $this->save();
+        }
     }
 
     public function remove()

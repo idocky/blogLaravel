@@ -49,7 +49,16 @@
                                     <img src="{{ $user->getImage() }}" alt="" class="img-responsive" width="150">
                                 </td>
                                 <td><a href="{{ route('users.edit', ['user' => $user]) }}" class="fa fa-pencil"></a>
-                                    <a href="#" class="fa fa-remove"></a></td>
+                                    {!! Form::open([
+                                        'route' => ['users.destroy', $user->id],
+                                        'method' => 'delete'
+                                    ]) !!}
+                                    <button onclick="return confirm('Are you sure?')" type="submit" class="delete">
+                                        <a class="fa fa-remove"></a>
+                                    </button>
+
+                                {!! Form::close() !!}
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
