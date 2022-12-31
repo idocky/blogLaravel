@@ -105,7 +105,7 @@ class User extends Authenticatable
     public function getImage()
     {
         if($this->avatar == null){
-            return 'img/no-user-image.png';
+            return '/img/no-user-image.png';
         }
 
         return '/uploads/' . $this->avatar;

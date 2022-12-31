@@ -48,7 +48,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    <button class="btn btn-default">Назад</button>
+                    <button class="btn btn-default"><a href="{{ route('users.index') }}">Назад</a></button>
                     <button class="btn btn-warning pull-right">Изменить</button>
                 </div>
                 <!-- /.box-footer-->
